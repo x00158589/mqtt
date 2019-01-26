@@ -1,0 +1,21 @@
+{"sysstat": {
+	"hosts": [
+		{
+			"nodename": "localhost.localdomain",
+			"sysname": "Linux",
+			"release": "4.19.5-300.fc29.x86_64",
+			"machine": "x86_64",
+			"number-of-cpus": 1,
+			"date": "25/01/19",
+			"statistics": [
+				{
+					"timestamp": "17:42:48",
+					"cpu-load": [
+						{"cpu": "-1", "usr": 2.93, "nice": 0.04, "sys": 1.81, "iowait": 1.41, "irq": 2.34, "soft": 3.01, "steal": 0.00, "guest": 0.00, "gnice": 0.00, "idle": 88.45}
+					]
+				}
+			]
+		}
+	]
+}}
+
