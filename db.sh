@@ -61,6 +61,7 @@ if [[ "$alarm" = "ACTIVE" ]]; then alarmstat="1;31m"
 	printf "| PIR %d: \e[${PIRSTAT}%-7s\e[0m | Alarm %d: \e[${alarmstat}%-7s\e[0m |\r\a" $room $PIR $room $alarm
 	sleep 0.5
 	alarmstat="K"
+	printf "\a"
 fi
 
 	printf "| PIR %d: \e[${PIRSTAT}%-7s\e[0m | Alarm %d: \e[${alarmstat}%-7s\e[0m |\n" $room $PIR $room $alarm
@@ -69,7 +70,8 @@ fi
 
 done
 	echo "+----------------+------------------+"
-	printf '\033[7A%s\r'
+((i+=4))
+	printf "\033[${i}A%s\r"
 sleep 1
 done
 

@@ -1,1 +1,1 @@
-{"house": "myhouse", "rooms" : [ { "room" : 1, "PIR" : "ACTIVE", "Alarm" : "ACTIVE" }, { "room" : 2, "PIR" : "OFF", "Alarm" : "OFF" }, { "room" : 3, "PIR" : "OFF", "Alarm" : "OFF" } ] }
+{"house": "myhouse", "rooms" : [ { "room" : 1, "PIR" : "ACTIVE", "Alarm" : "ACTIVE" }, { "room" : 2, "PIR" : "OFF", "Alarm" : "OFF" }, { "room" : 3, "PIR" : "OFF", "Alarm" : "OFF" }, { "room" : 4, "PIR" : "OFF", "Alarm" : "OFF" } ] }
