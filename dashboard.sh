@@ -1,13 +1,12 @@
 #!/bin/bash 
 #
 #
-
 rooms=()
 pirs=()
 alarms=()
 
 col_no="\033[0m"
-col_green="\033[1;32m"
+col_green="\033[0;32m"
 col_red="\033[1;31m"
 
 STATUS='INITIATE'
@@ -23,9 +22,7 @@ char=$1
 n=$2
 printf "%0.s${char}" $(seq 1 $n)
 }
-#declare -g rooms
-#declare -g msg_string
-
+clear
 mosquitto_sub -v -t '#' | while read mqtt_msg
 do 	IFS='/' read -r -a msg_string <<< "$mqtt_msg"
 			#room=$(echo "${msg_string[2]}")
@@ -57,23 +54,23 @@ do 	IFS='/' read -r -a msg_string <<< "$mqtt_msg"
 
 	fi
 
-	echo -n "+"; print_line "-" 50; echo "+"
-	n=$((49-${#house_name}))
+	echo -n "+"; print_line "-" 53; echo "+"
+	n=$((52-${#house_name}))
 	echo -n "|" $house_name; print_line " " $n; echo "|"
-	echo -n "+"; print_line "-" 50; echo "+"	
+	echo -n "+"; print_line "-" 53; echo "+"	
 		
 	for room_name in "${rooms[@]}"
 	do		
-		if [ "${pirs[$i]}" = "OFF" ]; then PIRSTAT="0;32m"; else PIRSTAT="0;31m"; fi
-		if [ "${alarms[$i]}" = "OFF" ]; then alarmstat="0;32m"; else alarmstat="0;31m"; fi
+		if [ "${pirs[$i]}" = "OFF" ]; then PIRSTAT=$col_green; else PIRSTAT=$col_red; fi
+		if [ "${alarms[$i]}" = "OFF" ]; then alarmstat=$col_green; else alarmstat=$col_red; fi
 		
 		echo -e -n "|" $room_name 
 		n=$((17-${#room_name})); print_line " " $n
-		printf "| PIR: \e[${PIRSTAT}%-7s\e[0m | Alarm: \e[${alarmstat}%-7s\e[0m |\n" ${pirs[$i]} ${alarms[$i]}
-
+		#printf "| PIR: \e[${PIRSTAT}%-7s\e[0m | Alarm: \e[${alarmstat}%-10s\e[0m |\n" ${pirs[$i]} ${alarms[$i]}
+		printf "| PIR: ${PIRSTAT}%-7s\e[0m | Alarm: ${alarmstat}%-10s\e[0m |\n" ${pirs[$i]} ${alarms[$i]}
 		((i++))
 	done
-echo -n "+"; print_line "-" 50; echo "+"
+echo -n "+"; print_line "-" 53; echo "+"
 ((i+=4))
 printf "\033[${i}A%s\r"
 done
