@@ -5,7 +5,7 @@
 
 pir='PIR'
 alarm='Alarm'
-activate='ACTIVATE'
+activate='ON'
 
 mosquitto_sub -v -t '/+/+/'$pir | \
 while read mqtt_string
